@@ -2,7 +2,25 @@
 
 //**NOTA: variable "tx" predefinida a partir de db.transaction
 
-function accesoBD(nombre,tamaño)
+
+function iniciarBd()
+{
+	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	
+	db.transaction(function(tx){
+		
+		tx.executeSql('CREATE TABLE IF NOT EXISTS reserva (rId, fecha, habitaciones, personas, estancia)');
+		}, function(err){
+				alert(err.code);
+			}, function (){
+				 alert('ok');
+				});
+}
+
+
+
+
+/*function accesoBD(nombre,tamaño)
 {
 	//acceso   a la BD
 	var db = window.openDatabase(nombre,//nombre BD
@@ -74,3 +92,4 @@ function isLogin() // regresa falso   para la  funcion de logeo
 	}
 }
 
+*/
