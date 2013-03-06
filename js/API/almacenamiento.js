@@ -73,3 +73,17 @@ function isLogin() // regresa falso   para la  funcion de logeo
 	return false;
 	}
 }
+
+function iniciarBd()
+{
+	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	
+	db.transaction(function(tx){
+		
+		tx.executeSql('CREATE TABLE IF NOT EXISTS reserva (rId, fecha, habitaciones, personas, estancia)');
+		}, function(err){
+				alert(err.code);
+			}, function (){
+				 alert('ok');
+				});
+}
