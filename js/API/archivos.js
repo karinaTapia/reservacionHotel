@@ -10,7 +10,7 @@ function subirArchivo(ruta){
 			//setData('usuario',$('#regNombre').val());
 			//setData('dispID', disp()['uuid']);
 				//crear tabla de reservaciones
-				 iniciarBD();
+				 //iniciarBD();
 			
 			
 		},
