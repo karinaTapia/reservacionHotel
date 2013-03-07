@@ -2,6 +2,18 @@
 
 //**NOTA: variable "tx" predefinida a partir de db.transaction
 
+function accesoBD(nombre,tamaño)
+{
+	//acceso   a la BD
+	var db = window.openDatabase(nombre,//nombre BD
+	 "1.0", //version
+	  nombre, //nombre a mostrar
+	   tamaño);// tamaño
+	   
+	   return db;
+
+}
+
 
 function iniciarBd()
 {
@@ -17,21 +29,32 @@ function iniciarBd()
 				});
 }
 
-
-
-
-/*function accesoBD(nombre,tamaño)
+function leerHistorial()
 {
-	//acceso   a la BD
-	var db = window.openDatabase(nombre,//nombre BD
-	 "1.0", //version
-	  nombre, //nombre a mostrar
-	   tamaño);// tamaño
+	  db.transaction(function(tx) 
+	  			{
+       				 tx.executeSql('SELECT * FROM historial',
+					 	[], //inicia query succes
+						function(tx, results) {
+										for (var i=0; i<results.rows.length; i++){
+											alert("Row = " + i + " ID = " + results.rows.item(i).id + " Data =  " + results.rows.item(i).data);
+										}
+									}
+								,//fin_query succes 
+						
+							function(err) {
+									alert("Error processing SQL: "+err.code);
+								}
+							);
+    			},
 	   
-	   return db;
+	  
+	  function(err) {
+					alert("Error processing SQL: "+err.code);
+				}
+			);//parametro 2
 
 }
-
 
 function transacciones(db, ejecuciones, error, ok)
 {
@@ -40,6 +63,10 @@ function transacciones(db, ejecuciones, error, ok)
 
 
 }
+
+
+/*
+
 
 
 function crearTabla(tx,nombre, campos)
