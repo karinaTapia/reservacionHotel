@@ -21,6 +21,7 @@ function iniciarBd()
 	
 	db.transaction(function(tx){
 		
+		tx.executeSql('CREATE TABLE IF NOT EXISTS reserva (hId, fecha, habitaciones, personas, estancia)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS reserva (rId, fecha, habitaciones, personas, estancia)');
 		}, function(err){
 				alert(err.code);
