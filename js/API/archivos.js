@@ -16,6 +16,7 @@ function subirArchivo(ruta){
 				}, errorCB, successCB);*/
 				
 				iniciarBd();
+				
 			
 			
 		},
