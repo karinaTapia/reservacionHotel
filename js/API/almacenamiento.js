@@ -19,8 +19,9 @@ function accesoBD(nombre,tamaño)
 function iniciarBd()
 {
 	var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
+	alert("solo entras");
 	
-	db.transaction(function(tx){
+/*	db.transaction(function(tx){
 		tx.executeSql('DROP TABLE IF EXISTS reserva');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS historial (hId, fecha, habitaciones, personas, estancia)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS reserva (rId, fecha, habitaciones, personas, estancia)');
@@ -33,7 +34,7 @@ function iniciarBd()
 				 window.localStorage.setItem('id',dispositivi()['id']);
 				 pgAlert("Reservas","Has sido registrado");
 				 window.location.href="#page";
-				});
+				});*/
 }
 
 function leerHistorial()
