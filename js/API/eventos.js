@@ -23,7 +23,8 @@ $(document).ready(function(e){
 		});
 		$('#pruebaSQL').tap(function(){
 			leerReserva();
-			})
+			});
+			reservar();
 	}, false);
 });
 
