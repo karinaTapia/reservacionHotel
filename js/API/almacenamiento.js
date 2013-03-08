@@ -51,14 +51,14 @@ function leerHistorial()
 								,//fin_query succes 
 						
 							function(err) {
-									alert("Error processing SQL: "+err.code);
+									alert("Error processing SQL Historial: "+err.code);
 								}
 							);
     			},
 	   
 	  
 	  function(err) {
-					alert("Error processing SQL: "+err.code);
+					alert("Error processing SQL Historal 2: "+err.code);
 				}
 			);//parametro 2
 
@@ -81,14 +81,14 @@ function leerReserva()
 								,//fin_query succes 
 						
 							function(err) {
-									alert("Error processing SQL: "+err.code);
+									alert("Error processing SQL reservas 1: "+err.code);
 								}
 							);
     			},
 	   
 	  
 	  function(err) {
-					alert("Error processing SQL: "+err.code);
+					alert("Error processing SQL Revervas 2: "+err.code);
 				}
 			);//parametro 2
 
@@ -114,7 +114,7 @@ function saveReserva()
 	accesoBD().transaction(function(tx){
 		tx.executeSQL('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (1,"'+fecha.getDate()+'/'+fecha.getMonth()+'/'+fecha.getFullYear()+ '", "'+habit+'","'+pers+'","'+dias+'")')
 		},function (err){
-			pgAlert('Error', err.code);
+			pgAlert('Error guaradr  reservas:', err.code);
 			},function(){
 				pgAlert('Guardado localmente','esperando por conexion al servidor');
 				});
