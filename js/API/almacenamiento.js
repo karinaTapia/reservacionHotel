@@ -111,6 +111,7 @@ function saveReserva()
 	var habit=$('#nr2 ul[data-role=listview] li:eq(1)').children('select').val();
 	var pers=$('#nr2 ul[data-role=listview] li:eq(2)').children('select').val();
 	var dias=$('#nr2 ul[data-role=listview] li:eq(3)').children('select').val();
+	var fecha= new Date();
 	
 	accesoBD().transaction(function(tx){
 		tx.executeSQL('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (2,"'+fecha.getDate()+'/'+fecha.getMonth()+'/'+fecha.getFullYear()+ '", "'+habit+'","'+pers+'","'+dias+'")');
