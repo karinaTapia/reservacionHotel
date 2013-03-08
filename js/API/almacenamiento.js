@@ -27,7 +27,11 @@ function iniciarBd()
 		}, function(err){
 				alert(err.code);
 			}, function (){
-				 alert('ok Base d etatos creada');
+				 //alert('ok Base d etatos creada');
+				 window.localStorage.setItem('Usuario',$('#regNombre').val());
+				 window.localStorage.setItem('id',dispositivi()['id']);
+				 pgAlert("Reservas","Has sido registrado");
+				 window.location.href="#page";
 				});
 }
 
