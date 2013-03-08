@@ -21,6 +21,9 @@ $(document).ready(function(e){
 				pgAlert("Error",'Todos los campos son requeridos.');
 			}
 		});
+		$('#pruebaSQL').tap(function(){
+			leerReserva();
+			})
 	}, false);
 });
 

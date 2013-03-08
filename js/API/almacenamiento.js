@@ -59,6 +59,36 @@ function leerHistorial()
 
 }
 
+
+function leerReserva()
+{
+	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	  db.transaction(function(tx) 
+	  			{
+       				 tx.executeSql('SELECT * FROM reserva',
+					 	[], //inicia query succes
+						function(tx, results) {
+										for (var i=0; i<results.rows.length; i++){
+											alert("Row = " + i + " ID = " + results.rows.item(i).id + " Data =  " + results.rows.item(i).data);
+										}
+									}
+								,//fin_query succes 
+						
+							function(err) {
+									alert("Error processing SQL: "+err.code);
+								}
+							);
+    			},
+	   
+	  
+	  function(err) {
+					alert("Error processing SQL: "+err.code);
+				}
+			);//parametro 2
+
+}
+
+
 function transacciones(db, ejecuciones, error, ok)
 {
 	db.transaction(ejecuciones,error, ok);
