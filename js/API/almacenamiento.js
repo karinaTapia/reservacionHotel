@@ -27,7 +27,7 @@ function iniciarBd()
 		}, function(err){
 				alert(err.code);
 			}, function (){
-				 alert('ok');
+				 alert('ok Base d etatos creada');
 				});
 }
 
