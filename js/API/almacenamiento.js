@@ -4,12 +4,13 @@
 
 function accesoBD(nombre,tamaño)
 {
-	//acceso   a la BD
+/*	//acceso   a la BD
 	var db = window.openDatabase(nombre,//nombre BD
 	 "1.0", //version
 	  nombre, //nombre a mostrar
 	   tamaño);// tamaño
-	   
+	   */
+	   var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
 	   return db;
 
 }
@@ -66,8 +67,8 @@ function leerHistorial()
 
 function leerReserva()
 {
-	alert("hola");
-	/*var db=window.openDatabase("database", "1.0","hotel", 200000);
+	//alert("hola");
+	var db=window.openDatabase("database", "1.0","hotel", 200000);
 	  db.transaction(function(tx) 
 	  			{
        				 tx.executeSql('SELECT * FROM reserva',
@@ -90,7 +91,7 @@ function leerReserva()
 					alert("Error processing SQL: "+err.code);
 				}
 			);//parametro 2
-*/
+
 }
 
 
@@ -100,6 +101,25 @@ function transacciones(db, ejecuciones, error, ok)
 	//ejecuciones se define a traez del objeto tx : function(tx)
 
 
+}
+
+
+function saveReserva()
+{
+	var tipoHabitacion=$('#nr1').attr('th');
+	var habit=$('#nr2 ul[data-role=listview]li:eq(1)').children('select').val();
+	var pers=$('#nr2 ul[data-role=listview]li:eq(2)').children('select').val();
+	var dias=$('#nr2 ul[data-role=listview]li:eq(3)').children('select').val();
+	
+	accesoBD().transaction(function(tx){
+		tx.executeSQL('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (1,"'+fecha.getDate()+'/'+fecha.getMonth()+'/'+fecha.getFullYear()+ '", "'+habit+'","'+pers+'","'+dias+'")')
+		},function (err){
+			pgAlert('Error', err.code);
+			},function(){
+				pgAlert('Guardado localmente','esperando por conexion al servidor');
+				});
+	
+	
 }
 
 

@@ -30,3 +30,41 @@ $(document).ready(function(e){
 function isLogin(){
 	return false;
 }
+
+
+function reservar()
+{
+	//todos los elemetos ocn clse OPc que esten dentro d ela lista, al darles click  muestra un alert con el index del elemento
+	$('#nrl ul[data-role=listview].opc').click(function(){
+			//alert($(this).index());
+			switch($(this).index())
+			{
+				case  1:
+					$('#nr1').attr('th','1');//agregamos un  atributo y un valor
+				
+					break;
+				
+				case  2:
+					$('#nr1').attr('th','2');//agregamos un  atributo y un valor
+					break;
+				
+				case  3:
+					$('#nr1').attr('th','3');//agregamos un  atributo y un valor
+					break;	
+			}// fin switch
+			
+			window.location.href='#nr2';
+		});
+		
+		$('#nr2 #enviar').tap(function(){
+			//pregunta si esta conecatdo a  internet, si esta ke  envie la info al  server, si no  que la guarde de manera local para que despues de  sincronize
+				if(!isConnected())
+				{//guaradr en BD local
+						saveReserva();
+				}
+				else
+				{//enviar info al server
+						
+				}
+			});
+}
