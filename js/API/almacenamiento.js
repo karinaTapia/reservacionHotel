@@ -62,7 +62,8 @@ function leerHistorial()
 
 function leerReserva()
 {
-	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	alert("hola");
+	/*var db=window.openDatabase("database", "1.0","hotel", 200000);
 	  db.transaction(function(tx) 
 	  			{
        				 tx.executeSql('SELECT * FROM reserva',
@@ -85,7 +86,7 @@ function leerReserva()
 					alert("Error processing SQL: "+err.code);
 				}
 			);//parametro 2
-
+*/
 }
 
 
