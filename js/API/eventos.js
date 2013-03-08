@@ -35,7 +35,7 @@ function isLogin(){
 function reservar()
 {
 	//todos los elemetos ocn clse OPc que esten dentro d ela lista, al darles click  muestra un alert con el index del elemento
-	$('#nrl ul[data-role=listview].opc').click(function(){
+	$('#nr1 ul[data-role=listview].opc').click(function(){
 			//alert($(this).index());
 			switch($(this).index())
 			{
