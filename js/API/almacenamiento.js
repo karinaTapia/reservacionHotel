@@ -108,12 +108,12 @@ function transacciones(db, ejecuciones, error, ok)
 function saveReserva()
 {
 	var tipoHabitacion=$('#nr1').attr('th');
-	var habit=$('#nr2 ul[data-role=listview]li:eq(1)').children('select').val();
-	var pers=$('#nr2 ul[data-role=listview]li:eq(2)').children('select').val();
-	var dias=$('#nr2 ul[data-role=listview]li:eq(3)').children('select').val();
+	var habit=$('#nr2 ul[data-role=listview] li:eq(1)').children('select').val();
+	var pers=$('#nr2 ul[data-role=listview] li:eq(2)').children('select').val();
+	var dias=$('#nr2 ul[data-role=listview] li:eq(3)').children('select').val();
 	
 	accesoBD().transaction(function(tx){
-		tx.executeSQL('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (1,"'+fecha.getDate()+'/'+fecha.getMonth()+'/'+fecha.getFullYear()+ '", "'+habit+'","'+pers+'","'+dias+'")')
+		tx.executeSQL('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (2,"'+fecha.getDate()+'/'+fecha.getMonth()+'/'+fecha.getFullYear()+ '", "'+habit+'","'+pers+'","'+dias+'")');
 		},function (err){
 			pgAlert('Error guaradr  reservas:', err.code);
 			},function(){

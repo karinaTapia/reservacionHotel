@@ -35,10 +35,10 @@ function isLogin(){
 
 function reservar()
 {
-	alert("reserva");
+
 	//todos los elemetos ocn clse OPc que esten dentro d ela lista, al darles click  muestra un alert con el index del elemento
 	$('#nr1 ul[data-role=listview] .opc').click(function(){
-		alert("reserva2");
+
 			//alert($(this).index());
 			switch($(this).index())
 			{
@@ -55,9 +55,9 @@ function reservar()
 					$('#nr1').attr('th','3');//agregamos un  atributo y un valor
 					break;	
 			}// fin switch
-			alert("fin swich");
+
 			window.location.href="#nr2";
-			alert("envio");
+
 		});
 		
 		$('#nr2 #enviar').tap(function(){
