@@ -17,11 +17,11 @@ function accesoBD(nombre,tamaño)
 
 function iniciarBd()
 {
-	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
 	
 	db.transaction(function(tx){
-		
-		tx.executeSql('CREATE TABLE IF NOT EXISTS reserva (hId, fecha, habitaciones, personas, estancia)');
+		tx.executeSql('DROP TABLE IF EXISTS reserva');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS historial (hId, fecha, habitaciones, personas, estancia)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS reserva (rId, fecha, habitaciones, personas, estancia)');
 		tx.executeSql('insert into  reserva (rId, fecha, habitaciones, personas, estancia)values(1,"2013-03-06",2,2,4)');
 		}, function(err){
