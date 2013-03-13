@@ -23,9 +23,10 @@ function iniciarBd()
 	
 	db.transaction(function(tx){
 		tx.executeSql('DROP TABLE IF EXISTS reserva');
+		//tx.executeSql('DROP TABLE IF EXISTS historial');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS historial (hId, fecha, habitaciones, personas, estancia)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS reserva (rId, fecha, habitaciones, personas, estancia)');
-		tx.executeSql('insert into  reserva (rId, fecha, habitaciones, personas, estancia)values(1,"2013-03-06",2,2,4)');
+		//tx.executeSql('insert into  reserva (rId, fecha, habitaciones, personas, estancia)values(1,"2013-03-06",2,2,4)');
 		}, function(err){
 				alert(err.code);
 			}, function (){
