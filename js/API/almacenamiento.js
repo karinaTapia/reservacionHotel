@@ -116,8 +116,8 @@ function saveReserva()
 	var dias=$('#nr2 ul[data-role=listview] li:eq(3)').children('select').val();
 	var fecha= new Date();
 	
-	var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
-	 db.transaction(function(tx){
+	//var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
+	 accesoBD.transaction(function(tx){
 		tx.executeSql('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (3, "'+fecha.getDate()+ '/' + fecha.getMonth() + '/' + fecha.getFullYear() + '", "'+habit+'","'+pers+'","'+dias+'")');
 		},function (err){  
 			pgAlert('Error guaradr  reservas:', err.code);
