@@ -107,6 +107,9 @@ function transacciones(db, ejecuciones, error, ok)
 
 function saveReserva()
 {
+	
+	alert("entas a save reserva");
+	/*
 	var tipoHabitacion=$('#nr1').attr('th');
 	var habit=$('#nr2 ul[data-role=listview] li:eq(1)').children('select').val();
 	var pers=$('#nr2 ul[data-role=listview] li:eq(2)').children('select').val();
@@ -122,7 +125,7 @@ function saveReserva()
 				pgAlert('Guardado localmente','esperando por conexion al servidor');
 				});
 	
-	
+	*/
 }
 
 
