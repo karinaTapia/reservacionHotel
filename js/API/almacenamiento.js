@@ -111,12 +111,12 @@ function getId(tab)
 	  db.transaction(function(tx) 
 	  			{
        				 tx.executeSql('SELECT * FROM '+tab,[], function (tx1, resultado){
-								regreso=resulado.rows.lenght;
-							}, function (err){});
+								regreso=resultado.rows.length;
+							}, function (err){});//error del  select
 				}, function(err){
-					alert(err.code);
+					alert(err.code); //error de transaccion
 					}, function ()
-					{
+					{ // exito de transaccion
 						});
 						
 						return regreso+1;
