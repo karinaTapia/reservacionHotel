@@ -118,8 +118,8 @@ function saveReserva()
 	
 	var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
 	 db.transaction(function(tx){
-		tx.executeSQL('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (2,"'+fecha.getDate()+'/'+fecha.getMonth()+'/'+fecha.getFullYear()+ '", "'+habit+'","'+pers+'","'+dias+'")');
-		},function (err){
+		tx.executeSql('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (3, "'+fecha.getDate()+ '/' + fecha.getMonth() + '/' + fecha.getFullYear() + '", "'+habit+'","'+pers+'","'+dias+'")');
+		},function (err){  
 			pgAlert('Error guaradr  reservas:', err.code);
 			},function(){
 				pgAlert('Guardado localmente','esperando por conexion al servidor');
