@@ -131,6 +131,8 @@ function saveReserva()
 //	alert("entas a save reserva");
 	var id_reserva=getId('reserva');
 	var id_historial=getId('historial');
+	
+	alert("id reserva"+id_reserva+ " '\n id_historial:"+id_historial);
 	var tipoHabitacion=$('#nr1').attr('th');
 	var habit=$('#nr2 ul[data-role=listview] li:eq(1)').children('select').val();
 	var pers=$('#nr2 ul[data-role=listview] li:eq(2)').children('select').val();
