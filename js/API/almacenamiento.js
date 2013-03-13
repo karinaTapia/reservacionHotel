@@ -114,7 +114,7 @@ function getId(tab)
 								regreso=resultado.rows.length;
 							}, function (err){});//error del  select
 				}, function(err){
-					alert(err.code); //error de transaccion
+					alert("error de transaccion"); //error de transaccion
 					}, function ()
 					{ // exito de transaccion
 						});
