@@ -40,7 +40,7 @@ function iniciarBd()
 
 function leerHistorial()
 {
-	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
 	  db.transaction(function(tx) 
 	  			{
        				 tx.executeSql('SELECT * FROM historial',
@@ -70,7 +70,7 @@ function leerHistorial()
 function leerReserva()
 {
 	//alert("hola");
-	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
 	  db.transaction(function(tx) 
 	  			{
        				 tx.executeSql('SELECT * FROM reserva',
@@ -107,13 +107,13 @@ function transacciones(db, ejecuciones, error, ok)
 
 function getId(tab)
 {
-	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
 	var regreso=0;
 	  db.transaction(function(tx) 
 	  			{
-       				 tx.executeSql('SELECT * FROM '+tab, [], function (tx1, resultado){
+       				 tx.executeSql('SELECT * FROM '+ tab, [], function (tx1, resultado){
 								regreso=resultado.rows.length;
-							}, function (err){});//error del  select
+							}, function (err){alert("Error consulta");});//error del  select
 				}, function(err){
 					alert("error de transaccion"); //error de transaccion
 					}, function ()
@@ -137,8 +137,8 @@ function saveReserva()
 	var dias=$('#nr2 ul[data-role=listview] li:eq(3)').children('select').val();
 	var fecha= new Date();
 	
-	//var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
-	 accesoBD.transaction(function(tx){
+	var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
+	 db.transaction(function(tx){
 		tx.executeSql('insert into reserva (rId, fecha, habitaciones, personas, estancia) values ('+id_reserva+', "'+fecha.getDate()+ '/' + fecha.getMonth() + '/' + fecha.getFullYear() + '", "'+habit+'","'+pers+'","'+dias+'")');
 		
 		tx.executeSql('insert into historial (hId, fecha, habitaciones, personas, estancia) values ('+id_historial+', "'+fecha.getDate()+ '/' + fecha.getMonth() + '/' + fecha.getFullYear() + '", "'+habit+'","'+pers+'","'+dias+'")');
