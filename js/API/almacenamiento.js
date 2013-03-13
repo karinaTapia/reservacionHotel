@@ -104,12 +104,32 @@ function transacciones(db, ejecuciones, error, ok)
 
 }
 
+function getId(tab)
+{
+	var db=window.openDatabase("database", "1.0","hotel", 200000);
+	var regreso=0;
+	  db.transaction(function(tx) 
+	  			{
+       				 tx.executeSql('SELECT * FROM '+tab,[], function (tx1, resultado){
+								regreso=resulado.rows.lenght;
+							}, function (err){});
+				}, function(err){
+					alert(err.code);
+					}, function ()
+					{
+						});
+						
+						return regreso+1;
+}
+
+
 
 function saveReserva()
 {
 	
 //	alert("entas a save reserva");
-	
+	var id_reserva=getId("reserva");
+	var id_historial=getId("historial");
 	var tipoHabitacion=$('#nr1').attr('th');
 	var habit=$('#nr2 ul[data-role=listview] li:eq(1)').children('select').val();
 	var pers=$('#nr2 ul[data-role=listview] li:eq(2)').children('select').val();
@@ -118,7 +138,10 @@ function saveReserva()
 	
 	//var db=window.openDatabase("bdhotel", "1.0","hotel", 200000);
 	 accesoBD.transaction(function(tx){
-		tx.executeSql('insert into reserva (rId, fecha, habitaciones, personas, estancia) values (3, "'+fecha.getDate()+ '/' + fecha.getMonth() + '/' + fecha.getFullYear() + '", "'+habit+'","'+pers+'","'+dias+'")');
+		tx.executeSql('insert into reserva (rId, fecha, habitaciones, personas, estancia) values ('+id_reserva+', "'+fecha.getDate()+ '/' + fecha.getMonth() + '/' + fecha.getFullYear() + '", "'+habit+'","'+pers+'","'+dias+'")');
+		
+		tx.executeSql('insert into historial (hId, fecha, habitaciones, personas, estancia) values ('+id_historial+', "'+fecha.getDate()+ '/' + fecha.getMonth() + '/' + fecha.getFullYear() + '", "'+habit+'","'+pers+'","'+dias+'")');
+		
 		},function (err){  
 			pgAlert('Error guaradr  reservas:', err.code);
 			},function(){
